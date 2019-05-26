@@ -358,9 +358,11 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\is-IS\Resources.resw" />
     <PRIResource Include="Strings\he-IL\Resources.resw" />
+    <PRIResource Include="Strings\ro-RO\Resources.resw" />
     <None Include="VLC_WinRT.Universal_TemporaryKey.pfx" />
     <PRIResource Include="Strings\cs-CZ\Resources.resw" />
     <PRIResource Include="Strings\pt-PT\Resources.resw" />
+    <PRIResource Include="Strings\pt-BR\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\libvlc\Universal\vlc-$(TargetedSDKArchitecture)\$(Configuration)\libvlc.dll">
@@ -368,6 +370,9 @@
     </Content>
     <Content Include="..\..\libvlc\Universal\vlc-$(TargetedSDKArchitecture)\$(Configuration)\libvlccore.dll">
       <Link>libvlccore.dll</Link>
+    </Content>
+    <Content Include="..\..\libvlc\Universal\vlc-$(TargetedSDKArchitecture)\$(Configuration)\plugins\access\liblive555_plugin.dll">
+      <Link>plugins\access\liblive555_plugin.dll</Link>
     </Content>
     <Content Include="..\..\libvlc\Universal\vlc-$(TargetedSDKArchitecture)\$(Configuration)\plugins\access\libaccess_concat_plugin.dll">
       <Link>plugins\access\libaccess_concat_plugin.dll</Link>
@@ -1275,7 +1280,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="SQLite.UWP.2015, Version=3.24.0">
+    <SDKReference Include="SQLite.UWP.2015, Version=3.28.0">
       <Name>SQLite for Universal Windows Platform</Name>
     </SDKReference>
     <SDKReference Include="WindowsDesktop, Version=10.0.16299.0">
@@ -1663,6 +1668,9 @@
     <XliffResource Include="MultilingualResources\VLC.Universal.nb-NO.xlf" />
     <XliffResource Include="MultilingualResources\VLC.Universal.nl-NL.xlf" />
     <XliffResource Include="MultilingualResources\VLC.Universal.pl-PL.xlf" />
+    <XliffResource Include="MultilingualResources\VLC.Universal.pt-BR.xlf" />
+    <XliffResource Include="MultilingualResources\VLC.Universal.pt-PT.xlf" />
+    <XliffResource Include="MultilingualResources\VLC.Universal.ro-RO.xlf" />
     <XliffResource Include="MultilingualResources\VLC.Universal.ru-RU.xlf" />
     <XliffResource Include="MultilingualResources\VLC.Universal.sk-SK.xlf" />
     <XliffResource Include="MultilingualResources\VLC.Universal.sv-SE.xlf" />

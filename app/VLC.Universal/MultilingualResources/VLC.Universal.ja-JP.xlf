@@ -786,6 +786,10 @@
           <source>Icelandic</source>
           <target state="translated">アイスランド語</target>
         </trans-unit>
+        <trans-unit id="HebrewLanguage" translate="yes" xml:space="preserve">
+          <source>Hebrew</source>
+          <target state="translated">ヘブライ語</target>
+        </trans-unit>
         <trans-unit id="Languages" translate="yes" xml:space="preserve">
           <source>Languages</source>
           <target state="translated">言語</target>
@@ -966,9 +970,13 @@
           <source>Xbox upload</source>
           <target state="translated">Xboxアップロード</target>
         </trans-unit>
-        <trans-unit id="HebrewLanguage" translate="yes" xml:space="preserve">
-          <source>Hebrew</source>
-          <target state="new">Hebrew</target>
+        <trans-unit id="RomanianLanguage" translate="yes" xml:space="preserve">
+          <source>Romanian</source>
+          <target state="new">Romanian</target>
+        </trans-unit>
+        <trans-unit id="BrazilianLanguage" translate="yes" xml:space="preserve">
+          <source>Brazilian</source>
+          <target state="new">Brazilian</target>
         </trans-unit>
       </group>
     </body>

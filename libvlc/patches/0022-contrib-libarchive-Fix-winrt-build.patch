@@ -1,0 +1,64 @@
+From f954560b46a373f67ecc3d4af44a85ad9022c03f Mon Sep 17 00:00:00 2001
+From: Steve Lhomme <robux4@ycbcr.xyz>
+Date: Mon, 9 Apr 2018 09:59:27 +0200
+Subject: [PATCH 22/28] contrib: libarchive: Fix winrt build
+
+don't force compilation for Windows XP
+don't call DebugBreak() (in debug builds)
+---
+ contrib/src/libarchive/winrt.patch | 42 ++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+
+diff --git a/contrib/src/libarchive/winrt.patch b/contrib/src/libarchive/winrt.patch
+index 50258dfe91..6dbc3c86d2 100644
+--- a/contrib/src/libarchive/winrt.patch
++++ b/contrib/src/libarchive/winrt.patch
+@@ -323,3 +323,45 @@
+ +    return ARCHIVE_FATAL;
+ +#endif
+  }
++--- libarchive-3.3.2/configure.ac	2018-04-09 13:17:33.304520600 +0200
+++++ libarchive-3.3.2/configure.ac.winstore	2018-04-09 13:17:40.471984000 +0200
++@@ -243,13 +243,13 @@ AM_CONDITIONAL([BUILD_BSDCPIO], [ test "
++ AM_CONDITIONAL([STATIC_BSDCPIO], [ test "$static_bsdcpio" = yes ])
++ 
++ # Set up defines needed before including any headers
++-case $host in
++-  *mingw* | *cygwin* | *msys*  )
++-  AC_DEFINE([_WIN32_WINNT], 0x0502, [Define to '0x0502' for Windows Server 2003 APIs.])
++-  AC_DEFINE([WINVER], 0x0502, [Define to '0x0502' for Windows Server 2003 APIs.])
++-  AC_DEFINE([NTDDI_VERSION], 0x05020000, [Define to '0x05020000' for Windows Server 2003 APIs.])
++-  ;;
++-esac
+++# case $host in
+++#   *mingw* | *cygwin* | *msys*  )
+++#   AC_DEFINE([_WIN32_WINNT], 0x0502, [Define to '0x0502' for Windows Server 2003 APIs.])
+++#   AC_DEFINE([WINVER], 0x0502, [Define to '0x0502' for Windows Server 2003 APIs.])
+++#   AC_DEFINE([NTDDI_VERSION], 0x05020000, [Define to '0x05020000' for Windows Server 2003 APIs.])
+++#   ;;
+++# esac
++ 
++ # Checks for header files.
++ AC_HEADER_DIRENT
++--- libarchive/libarchive/archive_check_magic.c	2018-04-10 10:52:18.395890700 +0200
+++++ libarchive/libarchive/archive_check_magic.c.winstore	2018-04-10 10:17:41.289866600 +0200
++@@ -43,6 +43,7 @@ __FBSDID("$FreeBSD: head/lib/libarchive/
++ #if defined(_WIN32) && !defined(__CYGWIN__)
++ #include <windows.h>
++ #include <winbase.h>
+++#include <winapifamily.h>
++ #endif
++ 
++ #include "archive_private.h"
++@@ -65,7 +66,7 @@ errmsg(const char *m)
++ static __LA_DEAD void
++ diediedie(void)
++ {
++-#if defined(_WIN32) && !defined(__CYGWIN__) && defined(_DEBUG)
+++#if defined(_WIN32) && !defined(__CYGWIN__) && defined(_DEBUG) && !WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_APP)
++ 	/* Cause a breakpoint exception  */
++ 	DebugBreak();
++ #endif
+-- 
+2.20.1
+

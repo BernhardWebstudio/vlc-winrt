@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file build-num="n/a" datatype="xml" original="VLC.UNIVERSAL/STRINGS/EN-US/RESOURCES.RESW" product-name="n/a" product-version="n/a" source-language="en-US" target-language="pt-PT" tool-id="MultilingualAppToolkit">
     <header>
@@ -8,7 +8,7 @@
       <group datatype="resx" id="VLC.UNIVERSAL/STRINGS/EN-US/RESOURCES.RESW">
         <trans-unit id="AboutTheApp" translate="yes" xml:space="preserve">
           <source>about the app</source>
-          <target state="translated">acerca da aplicação</target>
+          <target state="translated">sobre a aplicação</target>
         </trans-unit>
         <trans-unit id="Add" translate="yes" xml:space="preserve">
           <source>add</source>
@@ -192,7 +192,7 @@
         </trans-unit>
         <trans-unit id="HoweverYouMayFindWhatYouWantHere" translate="yes" xml:space="preserve">
           <source>however you may find what you're looking for here</source>
-          <target state="translated">contudo você pode encontrar o que procura aqui</target>
+          <target state="translated">contudo pode encontrar o que procura aqui</target>
         </trans-unit>
         <trans-unit id="HowToFavoriteAlbum1" translate="yes" xml:space="preserve">
           <source>to favorite an album, just press</source>
@@ -252,11 +252,11 @@
         </trans-unit>
         <trans-unit id="MusicSettings" translate="yes" xml:space="preserve">
           <source>Music Settings</source>
-          <target state="translated">Definições de música</target>
+          <target state="translated">Definições de Música</target>
         </trans-unit>
         <trans-unit id="MusicShows" translate="yes" xml:space="preserve">
           <source>music shows</source>
-          <target state="translated">Shows de música</target>
+          <target state="translated">Programas de música</target>
         </trans-unit>
         <trans-unit id="Mute" translate="yes" xml:space="preserve">
           <source>mute</source>
@@ -288,7 +288,7 @@
         </trans-unit>
         <trans-unit id="NoCameraVideosFound" translate="yes" xml:space="preserve">
           <source>no camera videos found</source>
-          <target state="translated">não foram encontrados vídeos de câmera</target>
+          <target state="translated">não foram encontrados vídeos de câmara</target>
         </trans-unit>
         <trans-unit id="NoFavoriteAlbums" translate="yes" xml:space="preserve">
           <source>no favorite albums</source>
@@ -460,7 +460,7 @@
         </trans-unit>
         <trans-unit id="ResetMusicDatabase" translate="yes" xml:space="preserve">
           <source>reset music database</source>
-          <target state="translated">restaurar base de dados de música</target>
+          <target state="translated">reiniciar a base de dados de música</target>
         </trans-unit>
         <trans-unit id="ResetSpeed" translate="yes" xml:space="preserve">
           <source>reset speed</source>
@@ -572,7 +572,7 @@
         </trans-unit>
         <trans-unit id="Video" translate="yes" xml:space="preserve">
           <source>video</source>
-          <target state="translated">video</target>
+          <target state="translated">vídeo</target>
         </trans-unit>
         <trans-unit id="VideoFolders" translate="yes" xml:space="preserve">
           <source>video folders</source>
@@ -596,7 +596,7 @@
         </trans-unit>
         <trans-unit id="VideoSettings" translate="yes" xml:space="preserve">
           <source>Video Settings</source>
-          <target state="translated">Definições de vídeo</target>
+          <target state="translated">Definições de Vídeo</target>
         </trans-unit>
         <trans-unit id="ViewAlbum" translate="yes" xml:space="preserve">
           <source>view album</source>
@@ -786,6 +786,10 @@
           <source>Icelandic</source>
           <target state="translated">Islandês</target>
         </trans-unit>
+        <trans-unit id="HebrewLanguage" translate="yes" xml:space="preserve">
+          <source>Hebrew</source>
+          <target state="translated">Hebraico</target>
+        </trans-unit>
         <trans-unit id="Languages" translate="yes" xml:space="preserve">
           <source>Languages</source>
           <target state="translated">Idiomas</target>
@@ -944,7 +948,7 @@
         </trans-unit>
         <trans-unit id="AddMarginExplanation" translate="yes" xml:space="preserve">
           <source>Some TVs will not display the app correctly. To add some margin, turn this on</source>
-          <target state="translated">Algumas TVs não mostrarão a app correctamente. Para adicionar alguma margem, active isto</target>
+          <target state="translated">Algumas TVs não mostrarão a app corretamente. Para adicionar alguma margem, ative isto</target>
         </trans-unit>
         <trans-unit id="ExtraMargin" translate="yes" xml:space="preserve">
           <source>Extra margin</source>
@@ -965,6 +969,14 @@
         <trans-unit id="XboxUpload" translate="yes" xml:space="preserve">
           <source>Xbox upload</source>
           <target state="translated">Envio para X-Box</target>
+        </trans-unit>
+        <trans-unit id="RomanianLanguage" translate="yes" xml:space="preserve">
+          <source>Romanian</source>
+          <target state="new">Romanian</target>
+        </trans-unit>
+        <trans-unit id="BrazilianLanguage" translate="yes" xml:space="preserve">
+          <source>Brazilian</source>
+          <target state="new">Brazilian</target>
         </trans-unit>
       </group>
     </body>

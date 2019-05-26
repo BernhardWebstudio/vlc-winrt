@@ -5,7 +5,7 @@ set -e
 usage()
 {
     echo "Usage: compile <arch> <TargetOS>"
-    echo "archs: i686,x86_64,armv7"
+    echo "archs: i686,x86_64,armv7,aarch64"
     echo "os: win81,win10"
 }
 
@@ -30,6 +30,10 @@ armv7)
     MSVC_TUPLE="ARM"
     using
     ;;
+aarch64)
+    MSVC_TUPLE="ARM64"
+    using
+    ;;
 *) echo "Unknown arch: $1"
    usage
    exit 1
@@ -39,7 +43,8 @@ esac
 case "$2" in
     win10)
         WINVER=0xA00
-        RUNTIME=msvcr120_app
+        RUNTIME=ucrt
+        RUNTIME_EXTRA='-lvcruntime140_app'
         LIBKERNEL32='-lwindowsapp'
         LIBLOLE32=
         ;;
@@ -88,36 +93,47 @@ then
 MAKEFLAGS=-j`nproc`
 fi
 
-# Build tools with the native compiler
-echo "Compiling missing tools..."
-cd extras/tools
-./bootstrap && make $MAKEFLAGS
-export PATH=`pwd`/build/bin:$PATH
-cd ../../
-
 TARGET_TUPLE=${1}-w64-mingw32
 case "${1}" in
-    armv7)
-        COMPILER="armv7-w64-mingw32-clang"
-        COMPILERXX="armv7-w64-mingw32-clang++"
-        # Clang will yield armv7-windows-gnu as build arch, which seems
-        # to confuse some configure scripts
-        BUILD_ARCH=x86_64-linux-gnu
-        ;;
     *)
         COMPILER=${TARGET_TUPLE}-gcc
         COMPILERXX=${TARGET_TUPLE}-g++
-        ${COMPILER} -dumpspecs | sed -e "s/-lmingwex/-lwinstorecompat -lmingwex -lwinstorecompat $LIBLOLE32 -lruntimeobject -lsynchronization/" -e "s/-lmsvcrt/-l$RUNTIME/" -e "s/-lkernel32/$LIBKERNEL32/" > ../newspecfile
-        NEWSPECFILE="`pwd`/../newspecfile"
-        COMPILER="${COMPILER} -specs=$NEWSPECFILE"
-        COMPILERXX="${COMPILERXX} -specs=$NEWSPECFILE"
+        if ${COMPILER} --version | grep -q gcc ; then
+            HAS_GCC=1
+        else
+            HAS_CLANG=1
+        fi
+        if [ "${HAS_GCC}" = "1" ]; then
+            ${COMPILER} -dumpspecs | sed -e "s/-lmingwex/-lwinstorecompat -lmingwex -lwinstorecompat $LIBLOLE32 -lruntimeobject -lsynchronization/" -e "s/-lmsvcrt/$RUNTIME_EXTRA -l$RUNTIME/" -e "s/-lkernel32/$LIBKERNEL32/" > ../newspecfile
+            NEWSPECFILE="`pwd`/../newspecfile"
+            COMPILER="${COMPILER} -specs=$NEWSPECFILE"
+            COMPILERXX="${COMPILERXX} -specs=$NEWSPECFILE"
+        fi
         BUILD_ARCH=`gcc -dumpmachine`
         ;;
 esac
 
+# Build tools with the native compiler
+echo "Compiling missing tools..."
+cd extras/tools
+./bootstrap && make $MAKEFLAGS
+if [ "$HAS_CLANG" = "1" ] ; then
+    # We need a patched version of libtool & cmake, regardless of which
+    # version is installed on the system.
+    # cmake can go away when we switch to 3.13.0
+    make $MAKEFLAGS .cmake .libtool
+fi
+export PATH=`pwd`/build/bin:$PATH
+cd ../../
 
 EXTRA_CPPFLAGS="-D_WIN32_WINNT=$WINVER -DWINVER=$WINVER -DWINSTORECOMPAT -D_UNICODE -DUNICODE -DWINAPI_FAMILY=WINAPI_FAMILY_APP"
-EXTRA_LDFLAGS="-lnormaliz -lwinstorecompat -lruntimeobject"
+if [ "${HAS_GCC}" = 1 ]; then
+    EXTRA_LDFLAGS="-lnormaliz -lwinstorecompat -lruntimeobject"
+else
+    # Clang doesn't support spec files, but will skip the builtin -lmsvcrt and -lkernel32 etc if it detects -lmsvcr* or -lucrt*, and
+    # -lwindowsapp on the command line.
+    EXTRA_LDFLAGS="-lnormaliz -lwinstorecompat $LIBOLE32 -lruntimeobject -lsynchronization $RUNTIME_EXTRA -l$RUNTIME $LIBKERNEL32"
+fi
 
 echo "Building the contribs"
 CONTRIB_FOLDER=contrib/winrt-$1-$RUNTIME
@@ -159,14 +175,15 @@ cd $CONTRIB_FOLDER
     --disable-mfx \
     --disable-x264 \
     --disable-x265 \
-    --disable-srt
+    --disable-srt \
+    --disable-aom
 
 echo "EXTRA_CFLAGS=${EXTRA_CPPFLAGS}" >> config.mak
 echo "EXTRA_LDFLAGS=${EXTRA_LDFLAGS}" >> config.mak
 echo "HAVE_WINSTORE := 1" >> config.mak
 echo "CC=${COMPILER}" >> config.mak
 echo "CXX=${COMPILERXX}" >> config.mak
-export PKG_CONFIG_LIBDIR="`pwd`/contrib/${TARGET_TUPLE}/lib/pkgconfig"
+export PKG_CONFIG_LIBDIR="`pwd`/../${TARGET_TUPLE}/lib/pkgconfig"
 
 USE_FFMPEG=1 \
 make $MAKEFLAGS

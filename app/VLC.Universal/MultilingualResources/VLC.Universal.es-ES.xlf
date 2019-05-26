@@ -212,7 +212,7 @@
         </trans-unit>
         <trans-unit id="IncreaseVolume" translate="yes" xml:space="preserve">
           <source>increase volume</source>
-          <target state="translated">incrementar volumen</target>
+          <target state="translated">subir volumen</target>
         </trans-unit>
         <trans-unit id="ItsEmpty" translate="yes" xml:space="preserve">
           <source>it's empty here</source>
@@ -786,6 +786,10 @@
           <source>Icelandic</source>
           <target state="translated">Islandés</target>
         </trans-unit>
+        <trans-unit id="HebrewLanguage" translate="yes" xml:space="preserve">
+          <source>Hebrew</source>
+          <target state="translated">Hebreo</target>
+        </trans-unit>
         <trans-unit id="Languages" translate="yes" xml:space="preserve">
           <source>Languages</source>
           <target state="translated">Idiomas</target>
@@ -966,9 +970,13 @@
           <source>Xbox upload</source>
           <target state="translated">Subida Xbox</target>
         </trans-unit>
-        <trans-unit id="HebrewLanguage" translate="yes" xml:space="preserve">
-          <source>Hebrew</source>
-          <target state="new">Hebrew</target>
+        <trans-unit id="RomanianLanguage" translate="yes" xml:space="preserve">
+          <source>Romanian</source>
+          <target state="new">Romanian</target>
+        </trans-unit>
+        <trans-unit id="BrazilianLanguage" translate="yes" xml:space="preserve">
+          <source>Brazilian</source>
+          <target state="new">Brazilian</target>
         </trans-unit>
       </group>
     </body>

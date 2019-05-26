@@ -729,6 +729,12 @@
   <data name="HebrewLanguage" xml:space="preserve">
     <value>Hebrew</value>
   </data>
+  <data name="RomanianLanguage" xml:space="preserve">
+    <value>Romanian</value>
+  </data>
+  <data name="BrazilianLanguage" xml:space="preserve">
+    <value>Brazilian</value>
+  </data>
   <data name="Languages" xml:space="preserve">
     <value>Languages</value>
   </data>

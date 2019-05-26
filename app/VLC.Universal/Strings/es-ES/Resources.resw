@@ -166,7 +166,7 @@
     <value>incrementar velocidad</value>
   </data>
   <data name="IncreaseVolume" xml:space="preserve">
-    <value>incrementar volumen</value>
+    <value>subir volumen</value>
   </data>
   <data name="ItsEmpty" xml:space="preserve">
     <value>está vacío</value>
@@ -596,6 +596,9 @@
   </data>
   <data name="IcelandicLanguage" xml:space="preserve">
     <value>Islandés</value>
+  </data>
+  <data name="HebrewLanguage" xml:space="preserve">
+    <value>Hebreo</value>
   </data>
   <data name="Languages" xml:space="preserve">
     <value>Idiomas</value>
