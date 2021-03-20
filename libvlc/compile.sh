@@ -6,7 +6,7 @@ usage()
 {
     echo "Usage: compile <arch> <TargetOS>"
     echo "archs: i686,x86_64,armv7,aarch64"
-    echo "os: win81,win10"
+    echo "os: win10"
 }
 
 using()
@@ -49,10 +49,13 @@ case "$2" in
         LIBLOLE32=
         ;;
     win81)
-        WINVER=0x602
-        RUNTIME=msvcr120_app
-        LIBKERNEL32=-lkernel32
-        LIBLOLE32=-lole32
+        echo "win81 not supported anymore"
+        usage
+        exit 1
+        #~ WINVER=0x602
+        #~ RUNTIME=msvcr120_app
+        #~ LIBKERNEL32=-lkernel32
+        #~ LIBLOLE32=-lole32
         ;;
     *)
         echo "Unknown OS: $2"
@@ -67,6 +70,8 @@ if [ ! -d "vlc" ]; then
     echo "VLC source not found, cloning"
     git clone http://git.videolan.org/git/vlc/vlc-3.0.git vlc
     cd vlc
+    git config --global user.email "cone@example.com"
+    git config --local user.name "Cony Cone"
     git am -3 ../patches/*.patch
     if [ $? -ne 0 ]; then
         git am --abort
@@ -116,14 +121,17 @@ esac
 # Build tools with the native compiler
 echo "Compiling missing tools..."
 cd extras/tools
-./bootstrap && make $MAKEFLAGS
-if [ "$HAS_CLANG" = "1" ] ; then
+
+export PATH="$PWD/build/bin":"$PATH"
+# Force patched meson as newer versions don't add -lpthread properly in libplacebo.pc
+FORCED_TOOLS="meson"
+if [ "${HAS_CLANG}" = "1" ] ; then
     # We need a patched version of libtool & cmake, regardless of which
     # version is installed on the system.
     # cmake can go away when we switch to 3.13.0
-    make $MAKEFLAGS .cmake .libtool
+    FORCED_TOOLS="$FORCED_TOOLS libtool"
 fi
-export PATH=`pwd`/build/bin:$PATH
+NEEDED="$FORCED_TOOLS" ./bootstrap && make $MAKEFLAGS
 cd ../../
 
 EXTRA_CPPFLAGS="-D_WIN32_WINNT=$WINVER -DWINVER=$WINVER -DWINSTORECOMPAT -D_UNICODE -DUNICODE -DWINAPI_FAMILY=WINAPI_FAMILY_APP"
@@ -172,7 +180,6 @@ cd $CONTRIB_FOLDER
     --enable-postproc \
     --enable-vpx \
     --enable-libdsm \
-    --disable-mfx \
     --disable-x264 \
     --disable-x265 \
     --disable-srt \
@@ -183,10 +190,10 @@ echo "EXTRA_LDFLAGS=${EXTRA_LDFLAGS}" >> config.mak
 echo "HAVE_WINSTORE := 1" >> config.mak
 echo "CC=${COMPILER}" >> config.mak
 echo "CXX=${COMPILERXX}" >> config.mak
+echo "MAKEFLAGS=${MAKEFLAGS}" >> config.mak
 export PKG_CONFIG_LIBDIR="`pwd`/../${TARGET_TUPLE}/lib/pkgconfig"
 
-USE_FFMPEG=1 \
-make $MAKEFLAGS
+USE_FFMPEG=1 make || USE_FFMPEG=1 make -j1
 
 BUILD_FOLDER=winrt-$1-$RUNTIME
 cd ../.. && mkdir -p ${BUILD_FOLDER} && cd ${BUILD_FOLDER}
@@ -221,7 +228,7 @@ cp -r _win32/lib/vlc/plugins tmp/
 
 find tmp -name "*.la" -exec rm -v {} \;
 find tmp -name "*.a" -exec rm -v {} \;
-blacklist="
+blocklist="
 wingdi
 waveout
 dshow
@@ -246,7 +253,7 @@ crystalhd
 smb
 "
 regexp=
-for i in ${blacklist}
+for i in ${blocklist}
 do
     if [ -z "${regexp}" ]
     then

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file build-num="n/a" datatype="xml" original="VLC.UNIVERSAL/STRINGS/EN-US/RESOURCES.RESW" product-name="n/a" product-version="n/a" source-language="en-US" target-language="pt-BR" tool-id="MultilingualAppToolkit">
     <header>
@@ -248,7 +248,7 @@
         </trans-unit>
         <trans-unit id="MusicFoldersDescription" translate="yes" xml:space="preserve">
           <source>VLC will only search songs that are in your music library. You can add folders to your library here</source>
-          <target state="translated">O VLC somente procurará músicas que estão na sua biblioteca de músicas. Adicione pastas à sua biblioteca aqui:</target>
+          <target state="translated">O VLC somente pesquisará músicas que estão na sua biblioteca de músicas. Adicione pastas à sua biblioteca aqui:</target>
         </trans-unit>
         <trans-unit id="MusicSettings" translate="yes" xml:space="preserve">
           <source>Music Settings</source>
@@ -472,7 +472,7 @@
         </trans-unit>
         <trans-unit id="Search" translate="yes" xml:space="preserve">
           <source>search</source>
-          <target state="translated">procurar</target>
+          <target state="translated">pesquisar</target>
         </trans-unit>
         <trans-unit id="Season" translate="yes" xml:space="preserve">
           <source>season</source>
@@ -790,6 +790,18 @@
           <source>Hebrew</source>
           <target state="translated">Hebraico</target>
         </trans-unit>
+        <trans-unit id="RomanianLanguage" translate="yes" xml:space="preserve">
+          <source>Romanian</source>
+          <target state="translated">Romeno</target>
+        </trans-unit>
+        <trans-unit id="BrazilianLanguage" translate="yes" xml:space="preserve">
+          <source>Brazilian</source>
+          <target state="translated">Português do Brasil</target>
+        </trans-unit>
+        <trans-unit id="ArabicLanguage" translate="yes" xml:space="preserve">
+          <source>Arabic</source>
+          <target state="translated">Árabe</target>
+        </trans-unit>
         <trans-unit id="Languages" translate="yes" xml:space="preserve">
           <source>Languages</source>
           <target state="translated">Idiomas</target>
@@ -969,14 +981,6 @@
         <trans-unit id="XboxUpload" translate="yes" xml:space="preserve">
           <source>Xbox upload</source>
           <target state="translated">Envio ao Xbox</target>
-        </trans-unit>
-        <trans-unit id="RomanianLanguage" translate="yes" xml:space="preserve">
-          <source>Romanian</source>
-          <target state="new">Romanian</target>
-        </trans-unit>
-        <trans-unit id="BrazilianLanguage" translate="yes" xml:space="preserve">
-          <source>Brazilian</source>
-          <target state="new">Brazilian</target>
         </trans-unit>
       </group>
     </body>

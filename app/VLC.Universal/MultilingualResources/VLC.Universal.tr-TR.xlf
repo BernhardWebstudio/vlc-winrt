@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
   <file build-num="n/a" datatype="xml" original="VLC.UNIVERSAL/STRINGS/EN-US/RESOURCES.RESW" product-name="n/a" product-version="n/a" source-language="en-US" target-language="tr-TR" tool-id="MultilingualAppToolkit">
     <header>
@@ -60,7 +60,7 @@
         </trans-unit>
         <trans-unit id="AudioTracks" translate="yes" xml:space="preserve">
           <source>Audio Tracks</source>
-          <target state="translated">Ses İzleri</target>
+          <target state="translated">Ses Kayıtları</target>
         </trans-unit>
         <trans-unit id="Back" translate="yes" xml:space="preserve">
           <source>back</source>
@@ -136,15 +136,15 @@
         </trans-unit>
         <trans-unit id="EvenIfBackground" translate="yes" xml:space="preserve">
           <source>even if the app is in background</source>
-          <target state="translated">uygulama art alanda iken</target>
+          <target state="translated">uygulama arka planda iken</target>
         </trans-unit>
         <trans-unit id="EvenIfNotBackground" translate="yes" xml:space="preserve">
           <source>even if the app is not in background</source>
-          <target state="translated">uygulama art alanda değilken</target>
+          <target state="translated">uygulama arka planda değilken</target>
         </trans-unit>
         <trans-unit id="FailFilePlayBackground" translate="yes" xml:space="preserve">
           <source>This file may not play in the background</source>
-          <target state="translated">Bu dosya art alanda oynatılamaz</target>
+          <target state="translated">Bu dosya arka planda oynatılamaz</target>
         </trans-unit>
         <trans-unit id="FailNavigateVideoPlayerPage" translate="yes" xml:space="preserve">
           <source>VLC failed to navigate to the Video Player page</source>
@@ -336,7 +336,7 @@
         </trans-unit>
         <trans-unit id="OpenSubtitle" translate="yes" xml:space="preserve">
           <source>open subtitle</source>
-          <target state="translated">altyazı aç</target>
+          <target state="translated">alt yazı aç</target>
         </trans-unit>
         <trans-unit id="OrderAscending" translate="yes" xml:space="preserve">
           <source>ascending</source>
@@ -512,15 +512,15 @@
         </trans-unit>
         <trans-unit id="SubtitleDelay" translate="yes" xml:space="preserve">
           <source>subtitle delay</source>
-          <target state="translated">altyazı gecikmesi</target>
+          <target state="translated">alt yazı gecikmesi</target>
         </trans-unit>
         <trans-unit id="Subtitles" translate="yes" xml:space="preserve">
           <source>Subtitles</source>
-          <target state="translated">Altyazılar</target>
+          <target state="translated">Alt yazılar</target>
         </trans-unit>
         <trans-unit id="SubtitlesEncoding" translate="yes" xml:space="preserve">
           <source>subtitles encoding</source>
-          <target state="translated">altyazı kodlaması</target>
+          <target state="translated">alt yazı kodlaması</target>
         </trans-unit>
         <trans-unit id="Theme" translate="yes" xml:space="preserve">
           <source>theme</source>
@@ -588,7 +588,7 @@
         </trans-unit>
         <trans-unit id="VideoPlaybackInBackground" translate="yes" xml:space="preserve">
           <source>play video in background</source>
-          <target state="translated">görüntü art alanda oynatılsın</target>
+          <target state="translated">görüntü arka planda oynatılsın</target>
         </trans-unit>
         <trans-unit id="Videos" translate="yes" xml:space="preserve">
           <source>videos</source>
@@ -628,7 +628,7 @@
         </trans-unit>
         <trans-unit id="BackgroundColor" translate="yes" xml:space="preserve">
           <source>background color</source>
-          <target state="translated">art alan rengi</target>
+          <target state="translated">arka plan rengi</target>
         </trans-unit>
         <trans-unit id="Dark" translate="yes" xml:space="preserve">
           <source>dark</source>
@@ -790,6 +790,18 @@
           <source>Hebrew</source>
           <target state="translated">İbranice</target>
         </trans-unit>
+        <trans-unit id="RomanianLanguage" translate="yes" xml:space="preserve">
+          <source>Romanian</source>
+          <target state="translated">Rumence</target>
+        </trans-unit>
+        <trans-unit id="BrazilianLanguage" translate="yes" xml:space="preserve">
+          <source>Brazilian</source>
+          <target state="translated">Brezilyaca</target>
+        </trans-unit>
+        <trans-unit id="ArabicLanguage" translate="yes" xml:space="preserve">
+          <source>Arabic</source>
+          <target state="translated">Arapça</target>
+        </trans-unit>
         <trans-unit id="Languages" translate="yes" xml:space="preserve">
           <source>Languages</source>
           <target state="translated">Diller</target>
@@ -900,7 +912,7 @@
         </trans-unit>
         <trans-unit id="NoSubtitles" translate="yes" xml:space="preserve">
           <source>No subtitle tracks</source>
-          <target state="translated">Altyazı kaydı bulunamadı</target>
+          <target state="translated">Alt yazı kaydı bulunamadı</target>
         </trans-unit>
         <trans-unit id="ClearKeystore" translate="yes" xml:space="preserve">
           <source>Clear saved credentials</source>
@@ -969,14 +981,6 @@
         <trans-unit id="XboxUpload" translate="yes" xml:space="preserve">
           <source>Xbox upload</source>
           <target state="translated">Xbox yükleme</target>
-        </trans-unit>
-        <trans-unit id="RomanianLanguage" translate="yes" xml:space="preserve">
-          <source>Romanian</source>
-          <target state="new">Romanian</target>
-        </trans-unit>
-        <trans-unit id="BrazilianLanguage" translate="yes" xml:space="preserve">
-          <source>Brazilian</source>
-          <target state="new">Brazilian</target>
         </trans-unit>
       </group>
     </body>
